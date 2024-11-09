@@ -1,5 +1,5 @@
 locals {
-  suffix = random_integer.random_suffix.result != "" ? random_integer.random_suffix.result : "0001"
+  cluster_name = var.cluster-name
 }
 
 resource "random_integer" "random_suffix" {
@@ -72,12 +72,12 @@ resource "aws_iam_role_policy_attachment" "eks-AmazonEBSCSIDriverPolicy" {
 # OIDC
 resource "aws_iam_role" "eks_oidc" {
   assume_role_policy = data.aws_iam_policy_document.eks_oidc_assume_role_policy.json
-  name               = "eks-oidc-${local.suffix}"
+  name               = "eks-oidc-${random_integer.random_suffix.result}"
 }
 
 resource "aws_iam_policy" "eks-oidc-policy" {
-  name = "test-policy-${local.suffix}"
-
+  name = "test-policy-${random_integer.random_suffix.result}"
+}
   policy = jsonencode({
     Statement = [{
       Action = [
