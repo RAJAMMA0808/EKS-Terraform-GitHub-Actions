@@ -69,8 +69,8 @@ resource "aws_iam_role_policy_attachment" "eks-AmazonEBSCSIDriverPolicy" {
 }
 
 # OIDC
-resource "aws_iam_role" "eks_oide" {
-  assume_role_policy = data.aws_iam_policy_document.eks_oide_assume_role_policy.json
+resource "aws_iam_role" "eks_oidc" {
+  assume_role_policy = data.aws_iam_policy_document.eks_oidc_assume_role_policy.json
   name               = "Raji0808"
 }
 
@@ -92,6 +92,6 @@ resource "aws_iam_policy" "eks-oidc-policy" {
 }
 
 resource "aws_iam_role_policy_attachment" "eks-oidc-policy-attach" {
-  role       = aws_iam_role.eks_oide.name
+  role       = aws_iam_role.eks_oidc.name
   policy_arn = aws_iam_policy.eks-oidc-policy.arn
 }
