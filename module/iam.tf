@@ -75,7 +75,7 @@ resource "aws_iam_role" "eks_oidc" {
 }
 
 resource "aws_iam_policy" "eks-oidc-policy" {
-  name = "Raji080"
+  name = "test-polic"
 
   policy = jsonencode({
     Statement = [{
