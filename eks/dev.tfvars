@@ -1,14 +1,14 @@
 env                   = "dev"
 aws-region            = "us-east-1"
-vpc-cidr-block        = "10.16.0.0/16"
+vpc-cidr-block        = "10.1.0.0/16"
 vpc-name              = "vpc"
 igw-name              = "igw"
 pub-subnet-count      = 3
-pub-cidr-block        = ["10.16.0.0/20", "10.16.16.0/20", "10.16.32.0/20"]
+pub-cidr-block        = ["10.10.0.0/24", "10.20.16.0/24", "10.30.32.0/24"]
 pub-availability-zone = ["us-east-1a", "us-east-1b", "us-east-1c"]
 pub-sub-name          = "subnet-public"
 pri-subnet-count      = 3
-pri-cidr-block        = ["10.16.128.0/20", "10.16.144.0/20", "10.16.160.0/20"]
+pri-cidr-block        = ["10.10.128.0/20", "10.20.144.0/24", "10.30.160.0/24"]
 pri-availability-zone = ["us-east-1a", "us-east-1b", "us-east-1c"]
 pri-sub-name          = "subnet-private"
 public-rt-name        = "public-route-table"
