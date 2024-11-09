@@ -56,7 +56,6 @@ resource "aws_iam_role_policy_attachment" "eks-AmazonEKS_CNI_Policy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy"
   role       = aws_iam_role.eks-nodegroup-role[count.index].name
 }
-
 resource "aws_iam_role_policy_attachment" "eks-AmazonEC2ContainerRegistryReadOnly" {
   count      = var.is_eks_nodegroup_role_enabled ? 1 : 0
   policy_arn = "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
@@ -72,11 +71,11 @@ resource "aws_iam_role_policy_attachment" "eks-AmazonEBSCSIDriverPolicy" {
 # OIDC
 resource "aws_iam_role" "eks_oidc" {
   assume_role_policy = data.aws_iam_policy_document.eks_oidc_assume_role_policy.json
-  name               = "eks-oidc-${random_integer.random_suffix.result}"
+  name               = "eks-oidc"
 }
 
 resource "aws_iam_policy" "eks-oidc-policy" {
-  name = "test-policy-${random_integer.random_suffix.result}"
+  name = "test-policy"
 
   policy = jsonencode({
     Statement = [{
