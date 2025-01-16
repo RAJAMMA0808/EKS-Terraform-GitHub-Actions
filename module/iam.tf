@@ -74,7 +74,7 @@ resource "aws_iam_role" "eks_oidc" {
   name               = "cicd"
 }
 
-resource "aws_iam_policy" "eks-oidc-policy" {
+#resource "aws_iam_policy" "eks-oidc-policy" {
   name = "cicd"
 
   policy = jsonencode({
